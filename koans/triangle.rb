@@ -14,7 +14,19 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  # no sides can be <= 0
+  raise TriangleError if a <= 0 || b <= 0 || c <= 0
+  # sum of two smaller sides must be > largest side
+  x, y, z = [a, b, c].sort 
+  raise TriangleError if x + y <= z
+
+  if x == y && y == z
+  	:equilateral
+  elsif x == y || x == z || y == z
+  	:isosceles
+  else
+  	:scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
